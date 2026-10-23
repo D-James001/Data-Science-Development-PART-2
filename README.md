@@ -15,7 +15,7 @@ An end-to-end Data Science and Machine Learning development portfolio documentin
 
 > [!IMPORTANT]
 > ### ⚠️ Educational Use Disclaimer & Caveat
-> The dataset utilized in this repository is statistically modeled **strictly for educational and instructional purposes** within the AltSchool Africa Data Science curriculum (Semester 3). **It is not an official census representation or empirical reflection of the actual United States Educational System, individual school districts, or real operating institutions.** All metrics, identifiers, and institutional figures are synthetic models designed to demonstrate data science and machine learning techniques.
+> The dataset utilized in this repository is statistically modeled **strictly for educational and instructional purposes** . **It is not an official census representation or empirical reflection of the actual United States Educational System, individual school districts, or real operating institutions.** All metrics, identifiers, and institutional figures are synthetic models designed to demonstrate data science and machine learning techniques.
 
 ---
 
