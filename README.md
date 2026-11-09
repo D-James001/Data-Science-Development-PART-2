@@ -6,6 +6,7 @@
 [![NumPy](https://img.shields.io/badge/NumPy-Scientific%20Computing-013243.svg?logo=numpy&logoColor=white)](https://numpy.org/)
 [![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-11557c.svg)](https://matplotlib.org/)
 [![Seaborn](https://img.shields.io/badge/Seaborn-Statistical%20Plots-4c72b0.svg)](https://seaborn.pydata.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-Machine%20Learning-f7931e.svg?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![Curriculum](https://img.shields.io/badge/AltSchool%20Africa-Data%20Science%20Semester%203-darkgreen.svg)](https://altschoolafrica.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -26,7 +27,7 @@ Modern machine learning is far more than tuning hyperparameters—it is an itera
 This repository (**Part 2** of the Data Science Development series) captures hands-on development milestones across the full Machine Learning lifecycle:
 - **Phase 1: Exploratory Data Analysis & Preprocessing** — Uncovering structural data distributions, skewness, socioeconomic gradients, and missingness patterns.
 - **Phase 2: Feature Engineering & Transformation** — Scaling, categorical encodings, interaction variables, and handling hierarchical domain metrics.
-- **Phase 3: Model Diagnostics & Evaluation** — Residual analyses, confusion matrices, bias vs. variance tradeoffs, and decision boundary interpretation.
+- **Phase 3: Model Diagnostics & Evaluation** — Confusion matrices, bias vs. variance tradeoffs, dimensionality reduction, and decision boundary interpretation.
 
 ---
 
@@ -37,11 +38,12 @@ The table below tracks the progressive activities, modules, and laboratory miles
 | Day / Milestone | Module / Activity | Core Focus & Techniques | Artifacts & Notebooks | Status |
 |---|---|---|---|:---:|
 | **Day 1** | **Machine Learning Visualization Pipeline** | • Computational role of visualization in ML<br>• Univariate distribution & skewness analysis (KDE, Histograms)<br>• Subgroup equity analysis via Title I Boxplots<br>• Multivariate interaction scatter plots (Socioeconomic factors vs. Math proficiency across governance controls) | [`day-1 ML Visualization.ipynb`](day-1%20ML%20Visualization.ipynb)<br>[`us_education_system_data_dictionary.md`](us_education_system_data_dictionary.md) | ✅ **Completed** |
-| **Day 2** | **Data Cleaning & Missing Value Imputation** | • Handling structural vs. random missingness (SAT/ACT/AP across grade tiers)<br>• Median/mode grouping & KNN imputation strategies<br>• Outlier detection & robust capping methods | *Upcoming Milestone* | 🔄 **In Pipeline** |
-| **Day 3** | **Feature Engineering & Transformation** | • Log-transformation for right-skewed funding variables<br>• One-Hot & Target encoding for high-cardinality locales & controls<br>• Interaction terms & multicollinearity diagnostics (VIF) | *Upcoming Milestone* | 🔄 **In Pipeline** |
-| **Day 4** | **Supervised Modeling (Regression & Classification)** | • Predicting 4-year graduation rates & math proficiency<br>• Baseline models (Linear/Ridge/Lasso vs. Random Forest & XGBoost)<br>• Cross-validation & hyperparameter tuning | *Upcoming Milestone* | 🔄 **In Pipeline** |
-| **Day 5** | **Model Evaluation, Diagnostics & Fairness** | • Residual diagnostic plots & learning curves<br>• Confusion matrices, ROC-AUC, Precision-Recall curves<br>• Bias vs. Variance diagnostic audits across socioeconomic subgroups | *Upcoming Milestone* | 🔄 **In Pipeline** |
-| **Day 6+** | **Unsupervised Clustering & Pipeline Deployment** | • K-Means & Hierarchical Clustering for institutional segmentation<br>• Dimensionality reduction (PCA / t-SNE)<br>• Reproducible ML pipeline scripts | *Upcoming Milestone* | 🔄 **In Pipeline** |
+| **Day 2** | **ML Visualization Continuation — Correlation, Classification & Dimensionality Reduction** | • Correlation matrix heatmaps for feature redundancy detection<br>• Supervised classification with Random Forest (above/below median math proficiency)<br>• Confusion matrix visualization & model diagnostics<br>• Dimensionality reduction via PCA (2D projections of feature space)<br>• Standardization with `StandardScaler` | [`day-2-ml-visualization-continuation.ipynb`](day-2-ml-visualization-continuation.ipynb)<br>[`Correlation matrix.png`](Correlation%20matrix.png)<br>[`Confusion Matrix.png`](Confusion%20Matrix.png)<br>[`2D PCA Projection.png`](2D%20PCA%20Projection.png) | ✅ **Completed** |
+| **Day 3** | **Data Cleaning & Missing Value Imputation** | • Handling structural vs. random missingness (SAT/ACT/AP across grade tiers)<br>• Median/mode grouping & KNN imputation strategies<br>• Outlier detection & robust capping methods | *Upcoming Milestone* | 🔄 **In Pipeline** |
+| **Day 4** | **Feature Engineering & Transformation** | • Log-transformation for right-skewed funding variables<br>• One-Hot & Target encoding for high-cardinality locales & controls<br>• Interaction terms & multicollinearity diagnostics (VIF) | *Upcoming Milestone* | 🔄 **In Pipeline** |
+| **Day 5** | **Supervised Modeling (Regression & Classification)** | • Predicting 4-year graduation rates & math proficiency<br>• Baseline models (Linear/Ridge/Lasso vs. Random Forest & XGBoost)<br>• Cross-validation & hyperparameter tuning | *Upcoming Milestone* | 🔄 **In Pipeline** |
+| **Day 6** | **Model Evaluation, Diagnostics & Fairness** | • Residual diagnostic plots & learning curves<br>• ROC-AUC, Precision-Recall curves<br>• Bias vs. Variance diagnostic audits across socioeconomic subgroups | *Upcoming Milestone* | 🔄 **In Pipeline** |
+| **Day 7+** | **Unsupervised Clustering & Pipeline Deployment** | • K-Means & Hierarchical Clustering for institutional segmentation<br>• Dimensionality reduction (PCA / t-SNE)<br>• Reproducible ML pipeline scripts | *Upcoming Milestone* | 🔄 **In Pipeline** |
 
 ---
 
@@ -89,6 +91,31 @@ Effective data visualization is not about cosmetic presentations; it is a vital 
 
 ---
 
+## 🔬 Deep Dive: Day 2 — Correlation, Classification & Dimensionality Reduction
+
+Day 2 builds upon the exploratory analysis from Day 1, advancing into three critical ML workflow stages: feature correlation analysis, supervised classification, and unsupervised dimensionality reduction.
+
+### Key Analytical Highlights from Day 2 Notebook
+
+1. **Correlation Matrix & Heatmap — Feature Redundancy Detection**:
+   - Computed pairwise Pearson correlations across all continuous numeric performance indicators (expenditure, student-teacher ratio, proficiency scores, graduation rates, etc.).
+   - Visualized the correlation structure using an annotated heatmap (`sns.heatmap`), enabling rapid identification of redundant or highly collinear features prior to model training.
+   - Key finding: Math and reading proficiency scores exhibit strong positive correlation, suggesting potential for dimensionality reduction or feature selection.
+
+2. **Supervised Classification — Random Forest (Model Diagnostics)**:
+   - Framed math proficiency as a binary classification task (above/below median proficiency).
+   - Trained a `RandomForestClassifier` (100 estimators) on a 70/30 train-test split.
+   - Evaluated model performance using a **confusion matrix heatmap**, enabling visual inspection of true/false positive and negative rates.
+   - Demonstrates the full supervised ML workflow: data cleaning → feature/target separation → train/test split → model training → prediction → evaluation.
+
+3. **Dimensionality Reduction — PCA (2D Projection)**:
+   - Applied `StandardScaler` to normalize features before PCA projection.
+   - Reduced the multi-dimensional feature space to 2 principal components using `PCA(n_components=2)`.
+   - Visualized the 2D PCA embeddings with class-based color coding, revealing cluster separability and overlap between above/below-median proficiency groups.
+   - Provides foundational understanding for unsupervised clustering and advanced dimensionality reduction techniques (t-SNE, UMAP) in future milestones.
+
+---
+
 ## 📊 Dataset Architecture & NCES Alignment
 
 The core laboratory dataset models an educational ecosystem of **5,000 institutions** across all 50 US States and the District of Columbia, aligned with U.S. Department of Education (NCES Common Core of Data / IPEDS) reporting frameworks.
@@ -111,13 +138,17 @@ The core laboratory dataset models an educational ecosystem of **5,000 instituti
 
 ```text
 Data-Science-Development-PART-2/
-├── .gitignore                                 # Git ignore patterns for Python, Jupyter, and OS artifacts
-├── LICENSE                                    # Open-source MIT License
-├── README.md                                  # Comprehensive portfolio documentation & activity tracker
-├── requirements.txt                           # Pinned Python package dependencies for reproducibility
-├── day-1 ML Visualization.ipynb               # Day 1: ML visualization pipeline & exploratory analysis
-├── us_education_system_data_dictionary.md     # Detailed data dictionary, schema descriptions, & analytical cases
-└── us_education_system_dataset.csv            # Modeled dataset of 5,000 educational institutions
+├── .gitignore                                     # Git ignore patterns for Python, Jupyter, and OS artifacts
+├── LICENSE                                        # Open-source MIT License
+├── README.md                                      # Comprehensive portfolio documentation & activity tracker
+├── requirements.txt                               # Pinned Python package dependencies for reproducibility
+├── day-1 ML Visualization.ipynb                   # Day 1: ML visualization pipeline & exploratory analysis
+├── day-2-ml-visualization-continuation.ipynb      # Day 2: Correlation, classification & PCA workflows
+├── us_education_system_data_dictionary.md         # Detailed data dictionary, schema descriptions, & analytical cases
+├── us_education_system_dataset.csv                # Modeled dataset of 5,000 educational institutions
+├── Correlation matrix.png                         # Day 2 Output: Heatmap of feature correlations
+├── Confusion Matrix.png                           # Day 2 Output: Random Forest classification confusion matrix
+└── 2D PCA Projection.png                          # Day 2 Output: PCA 2D embedding of feature space
 ```
 
 ---
@@ -157,7 +188,7 @@ jupyter lab
 # or
 jupyter notebook
 ```
-Open [`day-1 ML Visualization.ipynb`](day-1%20ML%20Visualization.ipynb) and run all cells sequentially. The notebook automatically detects local dataset availability or Kaggle execution paths.
+Open the Day 1 or Day 2 notebook and run all cells sequentially. The notebooks automatically detect local dataset availability or Kaggle execution paths.
 
 ---
 
@@ -166,6 +197,7 @@ Open [`day-1 ML Visualization.ipynb`](day-1%20ML%20Visualization.ipynb) and run 
 - **Programming Language:** Python 3.10+
 - **Data Manipulation:** `pandas`, `numpy`
 - **Data Visualization:** `matplotlib`, `seaborn`
+- **Machine Learning:** `scikit-learn` (Random Forest, PCA, StandardScaler, train/test split, confusion matrix)
 - **Interactive Computing:** `jupyter`, `ipykernel`
 - **Version Control & Collaboration:** Git, GitHub
 
